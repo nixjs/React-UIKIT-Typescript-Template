@@ -1,0 +1,33 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Layout/Row" />
+
+<style>{`
+`}</style>
+
+# Core concepts
+
+The core concept is based on [bootstrap](https://getbootstrap.com/docs/5.1/layout/columns/).
+
+# Row
+
+The Row lets you specify column widths across 6 breakpoint sizes (`xs`, `sm`, `md`, `lg`, `xl` and `xxl`). For every breakpoint, you can specify the amount of columns that will fit next to each other. You can also specify auto to set the columns to their natural widths.
+
+```javascript
+<Container>
+    <Row xs={2} md={4} lg={6}>
+        <Col>1 of 2</Col>
+        <Col>2 of 2</Col>
+    </Row>
+    <Row xs={1} md={2}>
+        <Col>1 of 3</Col>
+        <Col>2 of 3</Col>
+        <Col>3 of 3</Col>
+    </Row>
+    <Row xs="auto">
+        <Col>1 of 3</Col>
+        <Col>2 of 3</Col>
+        <Col>3 of 3</Col>
+    </Row>
+</Container>
+```

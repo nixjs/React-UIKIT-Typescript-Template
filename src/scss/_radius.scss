@@ -1,0 +1,41 @@
+@use "sass:math";
+
+$radiuses: 0, 8, 16, 50;
+
+$radiusKeys: (
+    'tl': (
+        'top': 'left',
+    ),
+    'tr': (
+        'top': 'right',
+    ),
+    'bl': (
+        'bottom': 'left',
+    ),
+    'br': (
+        'bottom': 'right',
+    ),
+    0: '',
+);
+
+@each $r in $radiuses {
+    @if ($r==50) {
+        .rd-circle {
+            border-radius: 50%;
+        }
+    } @else {
+        @each $k, $v in $radiusKeys {
+            @if $k==0 {
+                .rd-#{$r} {
+                    border-radius: #{math.div($r, 2)}rem;
+                }
+            } @else {
+                @each $s1, $s2 in $v {
+                    .rd-#{$k}-#{$r} {
+                        border-#{$s1}-#{$s2}-radius: #{math.div($r, 16)}rem;
+                    }
+                }
+            }
+        }
+    }
+}

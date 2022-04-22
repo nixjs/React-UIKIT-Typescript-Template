@@ -1,0 +1,7 @@
+
+@each $key,
+$val in $headingSizes {
+    #{$key} {
+        font-size: var(--base-#{$key}-font-size)
+    }
+}

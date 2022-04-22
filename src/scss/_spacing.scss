@@ -1,0 +1,41 @@
+@use "sass:math";
+
+$margins: (
+    'l': 'left',
+    'r': 'right',
+    't': 'top',
+    'b': 'bottom',
+    0: '',
+);
+
+@for $i from 0 through 72 {
+    @if $i % 2 == 0 {
+        @each $p, $n in $margins {
+            @if $p == 0 {
+                .m-#{$i} {
+                    margin: #{math.div($i, 2)}rem;
+                }
+            } @else {
+                .m#{$p}-#{$i} {
+                    margin-#{$n}: #{math.div($i, 2)}rem;
+                }
+            }
+        }
+    }
+}
+
+@for $i from 0 through 72 {
+    @if $i % 2 == 0 {
+        @each $p, $n in $margins {
+            @if $p == 0 {
+                .p-#{$i} {
+                    padding: #{math.div($i, 2)}rem;
+                }
+            } @else {
+                .p#{$p}-#{$i} {
+                    padding-#{$n}: #{math.div($i, 2)}rem;
+                }
+            }
+        }
+    }
+}

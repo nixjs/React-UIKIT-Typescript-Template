@@ -1,0 +1,17 @@
+@use "sass:math";
+
+$fonts: 12, 14, 16, 18, 20, 24, 26, 28, 30, 32, 34, 36, 48, 56, 64, 72, 128;
+
+$weights: 100, 300, 400, 500, 600, 700, 900;
+
+@each $val in $fonts {
+    .text-#{$val} {
+        font-size: #{math.div($val, 16)}rem;
+    }
+}
+
+@each $val in $weights {
+    .w#{$val} {
+        font-weight: $val;
+    }
+}

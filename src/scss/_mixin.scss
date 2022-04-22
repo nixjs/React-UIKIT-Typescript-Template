@@ -1,0 +1,12 @@
+@mixin assign-map-properties($map, $prefix, $suffix) {
+    @each $key,
+    $value in $map {
+        @if (type-of($value)=='string') {
+            --#{$prefix}-#{$key}#{$suffix}: '#{$value}';
+        }
+
+        @else {
+            --#{$prefix}-#{$key}#{$suffix}: #{$value};
+        }
+    }
+}

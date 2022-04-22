@@ -1,0 +1,94 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Layout/Breakpoints" />
+
+<style>{`
+`}</style>
+
+# Core concepts
+
+The core concept is based on [bootstrap](https://getbootstrap.com/docs/5.1/layout/breakpoints/#core-concepts):
+
+-   Breakpoints are the building blocks of responsive design.
+-   Use media queries to architect your CSS by breakpoint.
+-   Mobile first, responsive design is the goal.
+
+# Available breakpoints
+
+| Breakpoint        | Class infix | Dimensions |
+| ----------------- | ----------- | ---------- |
+| X-Small           | None        | <576px     |
+| Small             | sm          | ≥576px     |
+| Medium            | md          | ≥768px     |
+| Large             | lg          | ≥992px     |
+| Extra large       | xl          | ≥1200px    |
+| Extra extra large | xxl         | ≥1400px    |
+
+# Min-width
+
+The UIKIT primarily uses the following media query ranges—or breakpoints—in our source Sass files for our layout, grid system, and components.
+
+```css
+// Source mixins
+
+// No media query necessary for xs breakpoint as it's effectively `@media (min-width: 0) { ... }`
+@include media-breakpoint-up(sm) {
+    ...;
+}
+@include media-breakpoint-up(md) {
+    ...;
+}
+@include media-breakpoint-up(lg) {
+    ...;
+}
+@include media-breakpoint-up(xl) {
+    ...;
+}
+@include media-breakpoint-up(xxl) {
+    ...;
+}
+
+// Usage
+
+// Example: Hide starting at `min-width: 0`, and then show at the `sm` breakpoint
+.custom-class {
+    display: none;
+}
+@include media-breakpoint-up(sm) {
+    .custom-class {
+        display: block;
+    }
+}
+```
+
+These Sass mixins translate in our compiled CSS using the values declared in our Sass variables. For example:
+
+```css
+// X-Small devices (portrait phones, less than 576px)
+// No media query for `xs` since this is the default in Bootstrap
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+    ...;
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+    ...;
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+    ...;
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    ...;
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+    ...;
+}
+```

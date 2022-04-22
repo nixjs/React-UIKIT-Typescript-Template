@@ -1,0 +1,66 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Layout/Container" />
+
+<style>{`
+`}</style>
+
+# Core concepts
+
+The core concept is based on [bootstrap](https://getbootstrap.com/docs/5.1/layout/containers/).
+
+Containers are the most basic layout element in Bootstrap and are required when using our default grid system. Containers are used to contain, pad, and (sometimes) center the content within them. While containers can be nested, most layouts do not require a nested container.
+
+UIKIT comes with three different containers:
+
+-   `.container`, which sets a `max-width` at each responsive breakpoint.
+-   `.container-fluid`, which is `width: 100%` at all breakpoints.
+-   `.container-{breakpoint}`, which is `width: 100%` until the specified breakpoint.
+
+The table below illustrates how each container’s max-width compares to the original `.container` and `.container-fluid` across each breakpoint.
+
+|                  | Extra small <576px | Small ≥576px | Medium ≥768px | Large ≥992px | X-Large ≥1200px | XX-Large ≥1400px |
+| ---------------- | ------------------ | ------------ | ------------- | ------------ | --------------- | ---------------- |
+| .container       | 100%               | 540px        | 720px         | 960px        | 1140px          | 1320px           |
+| .container-sm    | 100%               | 540px        | 720px         | 960px        | 1140px          | 1320px           |
+| .container-md    | 100%               | 100%         | 720px         | 960px        | 1140px          | 1320px           |
+| .container-lg    | 100%               | 100%         | 100%          | 960px        | 1140px          | 1320px           |
+| .container-xl    | 100%               | 100%         | 100%          | 100%         | 1140px          | 1320px           |
+| .container-xxl   | 100%               | 100%         | 100%          | 100%         | 100%            | 1320px           |
+| .container-fluid | 100%               | 100%         | 100%          | 100%         | 100%            | 100%             |
+
+# Default container
+
+Containers provide a means to center and horizontally pad your site’s contents. Use `Container` for a responsive pixel width.
+
+```javascript
+<Container>
+    <Row>
+        <Col>1 of 1</Col>
+    </Row>
+</Container>
+```
+
+# Fluid Container
+
+You can use `<Container fluid />` for width: 100% across all viewport and device sizes.
+
+```javascript
+<Container fluid>
+    <Row>
+        <Col>1 of 1</Col>
+    </Row>
+</Container>
+```
+
+# Responsive Container
+
+Responsive containers allow you to specify a class that is 100% wide until the specified breakpoint is reached, after which we apply `max-width`s for each of the higher breakpoints. For example, `<Container fluid="sm">` is 100% wide to start until the sm breakpoint is reached, where it will scale up with `md`, `lg`, `xl`, and `xxl`.
+
+```javascript
+<Container fluid="sm">
+    <Row>
+        <Col>1 of 1</Col>
+    </Row>
+<Container/>
+```

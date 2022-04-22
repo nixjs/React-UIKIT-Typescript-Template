@@ -1,0 +1,71 @@
+import { Meta } from '@storybook/addon-docs'
+
+<Meta title="Layout/Col" />
+
+<style>{`
+`}</style>
+
+# Core concepts
+
+The core concept is based on [bootstrap](https://getbootstrap.com/docs/5.1/layout/columns/).
+
+```javascript
+<Container>
+    <Row>
+        <Col md={4}>Column</Col>
+        <Col md={4}>Column</Col>
+        <Col md={4}>Column</Col>
+    </Row>
+</Container>
+```
+
+# Reordering
+
+Use `.order-` classes for controlling the visual order of your content. These classes are responsive, so you can set the order by breakpoint (e.g., `.order-1.order-md-2`). Includes support for 1 through 5 across all six grid tiers.
+
+```javascript
+<Container>
+    <Row>
+        <Col className="order-5">Column</Col>
+        <Col className="order-1">Column</Col>
+    </Row>
+</Container>
+<Container>
+    <Row>
+        <Col className="order-5">Column</Col>
+        <Col className="order-1">Column</Col>
+    </Row>
+</Container>
+```
+
+There are also responsive .order-first and `.order-last` classes that change the order of an element by applying `order: -1` and `order: 6`, respectively. These classes can also be intermixed with the numbered `.order-*` classes as needed.
+
+```javascript
+<Container>
+    <Row>
+        <Col className="order-last">Column</Col>
+        <Col>Column</Col>
+        <Col className="order-first">Column</Col>
+    </Row>
+</Container>
+```
+
+# Offsetting columns
+
+For offsetting grid columns you can set an `offset` value or for a more general layout, use the margin class utilities.
+
+```javascript
+<Container>
+    <Row>
+        <Col md={4}>md=4</Col>
+        <Col md={{ span: 4, offset: 4 }}>{`md={{ span: 4, offset: 4 }}`}</Col>
+    </Row>
+    <Row>
+        <Col md={{ span: 3, offset: 3 }}>{`md={{ span: 3, offset: 3 }}`}</Col>
+        <Col md={{ span: 3, offset: 3 }}>{`md={{ span: 3, offset: 3 }}`}</Col>
+    </Row>
+    <Row>
+        <Col md={{ span: 6, offset: 3 }}>{`md={{ span: 6, offset: 3 }}`}</Col>
+    </Row>
+</Container>
+```

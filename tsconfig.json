@@ -1,0 +1,34 @@
+{
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+  ],
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "esnext",
+    "noEmit": true,
+    "declaration": true,
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "stripInternal": true,
+    "moduleResolution": "node",
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "declarationDir": "lib/types",
+    "lib": [
+      "ES6",
+      "DOM",
+      "DOM.Iterable",
+      "ESNext.AsyncIterable"
+    ],
+    "typeRoots": [
+      "node_modules/@types"
+    ]
+  }
+}

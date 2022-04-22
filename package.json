@@ -1,0 +1,92 @@
+{
+    "name": "react-uikit-typescript-template",
+    "version": "1.0.0",
+    "description": "A set of React components and hooks used to build pages.",
+    "author": "nghinv",
+    "license": "MIT",
+    "sideEffects": false,
+    "main": "lib/cjs/index.js",
+    "module": "lib/esm/index.js",
+    "browser": "lib/esm/index.js",
+    "types": "lib/types/index.d.ts",
+    "exports": {
+        "import": "./lib/esm/index.js",
+        "require": "./lib/cjs/index.js"
+    },
+    "files": [
+        "lib"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "clean": "rimraf lib/*",
+        "css-minify": "cleancss -O1 --format breakWith=lf --with-rebase --source-map --source-map-inline-sources --output lib/css/ --batch --batch-suffix \".min\" \"lib/css/*.css\" \"!lib/css/*.min.css\"",
+        "css-compile": "sass --style expanded --no-source-map --no-error-css src/scss/:lib/css/",
+        "build:css": "npm-run-all css-compile css-minify",
+        "build:pre": "run-s clean",
+        "build:cjs": "npx tsc -p tsconfig.cjs.json",
+        "build:esm": "npx tsc -p tsconfig.esm.json",
+        "build": "run-s build:pre build:cjs build:esm build:css",
+        "postbuild": "echo '{\"type\":\"commonjs\"}' | npx json > lib/cjs/package.json && echo '{\"type\":\"module\"} ' | npx json > lib/esm/package.json && cp -r ./src/scss ./lib/scss",
+        "format:check": "prettier --check --loglevel error 'src/**/*.{ts,tsx,js,jsx}'",
+        "format:write": "prettier --write 'src/**/*.{ts,tsx,js,jsx}'",
+        "test": "jest",
+        "lint": "eslint 'src/**/*.{ts,tsx,js,jsx}'",
+        "prepare": "is-ci || husky install",
+        "storybook": "start-storybook -p 6006",
+        "build-storybook": "build-storybook"
+    },
+    "dependencies": {
+        "classnames": "^2.3.1"
+    },
+    "peerDependencies": {
+        "react": ">=16",
+        "react-dom": ">=16",
+        "styled-components": "^5.3.5"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.17.6",
+        "@babel/core": "^7.17.9",
+        "@babel/eslint-parser": "^7.17.0",
+        "@babel/preset-env": "^7.16.11",
+        "@babel/preset-react": "^7.16.7",
+        "@babel/preset-typescript": "^7.16.7",
+        "@commitlint/cli": "^16.2.3",
+        "@commitlint/config-conventional": "^16.2.1",
+        "@storybook/addon-actions": "^6.4.22",
+        "@storybook/addon-essentials": "^6.4.22",
+        "@storybook/addon-interactions": "^6.4.22",
+        "@storybook/addon-links": "^6.4.22",
+        "@storybook/react": "^6.4.22",
+        "@storybook/testing-library": "^0.0.11",
+        "@types/eslint": "^8.4.1",
+        "@types/eslint-plugin-prettier": "^3.1.0",
+        "@types/jest": "^27.0.0",
+        "@types/node": "^17.0.23",
+        "@types/prettier": "^2.4.4",
+        "@types/react": "^17.0.44",
+        "@types/react-dom": "^17.0.15",
+        "@typescript-eslint/eslint-plugin": "^5.18.0",
+        "@typescript-eslint/parser": "^5.18.0",
+        "babel-eslint": "^10.1.0",
+        "babel-loader": "^8.2.5",
+        "babel-plugin-styled-components": "^2.0.7",
+        "clean-css-cli": "^5.6.0",
+        "eslint": "^8.13.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-config-react-app": "^7.0.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "husky": "^7.0.0",
+        "is-ci": "^3.0.1",
+        "jest": "^27.0.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.6.2",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "sass": "^1.50.1",
+        "styled-components": "^5.3.5",
+        "ts-jest": "^27.0.0",
+        "typescript": "~4.4.4"
+    }
+}
